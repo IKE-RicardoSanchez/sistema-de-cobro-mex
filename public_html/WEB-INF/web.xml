@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Seguridad.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CambiaPwd</servlet-name>
+        <servlet-class>Seguridad.CambiaPwd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ValidaUsuario</servlet-name>
+        <servlet-class>Seguridad.ValidaUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LlenaCombos</servlet-name>
+        <servlet-class>Utilerias.LlenaCombos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Lista</servlet-name>
+        <servlet-class>Utilerias.Lista</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Pagina</servlet-name>
+        <servlet-class>UtlHash.Pagina</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadPagina</servlet-name>
+        <servlet-class>UtlHash.LoadPagina</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Usuario</servlet-name>
+        <servlet-class>UtlHash.Usuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadUsuario</servlet-name>
+        <servlet-class>UtlHash.LoadUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Grafica</servlet-name>
+        <servlet-class>Utilerias.Grafica</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SGrafica</servlet-name>
+        <servlet-class>Utilerias.SGrafica</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>Captcha</servlet-name>
+        <servlet-class>Utilerias.Captcha</servlet-class>
+    </servlet>
+
+   <servlet>
+        <servlet-name>Upload</servlet-name>
+        <servlet-class>Utilerias.Upload</servlet-class>
+    </servlet> 
+    
+    <servlet>
+        <servlet-name>UploadReverso</servlet-name>
+        <servlet-class>Utilerias.UploadReverso</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>SessionCobros</servlet-name>
+        <servlet-class>Utilerias.SessionCobros</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ProcesoAdicional</servlet-name>
+        <servlet-class>Utilerias.ProcesoAdicional</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>LeeArchivo</servlet-name>
+        <servlet-class>Utilerias.LeeArchivo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/servlet/Seguridad.Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CambiaPwd</servlet-name>
+        <url-pattern>/servlet/Seguridad.CambiaPwd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidaUsuario</servlet-name>
+        <url-pattern>/servlet/Seguridad.ValidaUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LlenaCombos</servlet-name>
+        <url-pattern>/servlet/Utilerias.LlenaCombos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Lista</servlet-name>
+        <url-pattern>/servlet/Utilerias.Lista</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Pagina</servlet-name>
+        <url-pattern>/servlet/UtlHash.Pagina</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadPagina</servlet-name>
+        <url-pattern>/servlet/UtlHash.LoadPagina</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Usuario</servlet-name>
+        <url-pattern>/servlet/UtlHash.Usuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadUsuario</servlet-name>
+        <url-pattern>/servlet/UtlHash.LoadUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Grafica</servlet-name>
+        <url-pattern>/Grafica</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SGrafica</servlet-name>
+        <url-pattern>/SGrafica</url-pattern>
+    </servlet-mapping>
+
+     <servlet-mapping>
+        <servlet-name>Captcha</servlet-name>
+        <url-pattern>/servlet/Utilerias.Captcha</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>Upload</servlet-name>
+        <url-pattern>/servlet/Utilerias.Upload</url-pattern>
+    </servlet-mapping>
+    
+  <servlet-mapping>
+        <servlet-name>UploadReverso</servlet-name>
+        <url-pattern>/servlet/Utilerias.UploadReverso</url-pattern>
+    </servlet-mapping> 
+    
+    <servlet-mapping>
+        <servlet-name>SessionCobros</servlet-name>
+        <url-pattern>/servlet/Utilerias.SessionCobros</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ProcesoAdicional</servlet-name>
+        <url-pattern>/servlet/Utilerias.ProcesoAdicional</url-pattern>
+    </servlet-mapping>
+
+
+    <listener>
+        <listener-class>Seguridad.SessionListener</listener-class>
+    </listener>
+
+
+    <servlet-mapping>
+        <servlet-name>LeeArchivo</servlet-name>
+        <url-pattern>/LeeArchivo</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>180</session-timeout>
+    </session-config>
+   
+    <error-page>
+        <error-code>500</error-code>
+        <location>/ErrorPage.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/ErrorPage.jsp</location>
+    </error-page>
+
+   
+    <mime-mapping>
+        <extension>html</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>txt</extension>
+        <mime-type>text/plain</mime-type>
+    </mime-mapping>
+    <resource-ref>
+        <res-ref-name>jdbc/IkeTMK</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+</web-app>
