@@ -1,0 +1,16 @@
+/* 
+    Document   : StyleD
+    Created on : 10/03/2021, 10:02:05 AM
+    Author     : rmatin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.progress-bar{
+    position: relative;
+    border: #ccc solid 1px;
+    width: 100%;
+    height: 30px;
+    line-height: 40px;
+    vertical-align: middle;
+    box-shadow: 0 4px 10px -5px rgba(0,0,0,0.25);
+}

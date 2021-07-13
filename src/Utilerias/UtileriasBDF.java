@@ -72,12 +72,15 @@ public class UtileriasBDF {
                                    200,
                                    1200,
                                    10000,  // milliseconds
-                                   "jdbc:sqlserver://172.21.17.10:1433;SelectMethod=cursor;DatabaseName=TELEMARKETING_PROD",
+                                   //"jdbc:sqlserver://172.21.17.10:1433;SelectMethod=cursor;DatabaseName=TELEMARKETING_PROD",
+                                    //"dessiaikeMX","dess1ike.TMK.2011"); //PROD
+                                    "jdbc:sqlserver://172.21.10.88:1533;SelectMethod=cursor;DatabaseName=TELEMARKETING_DEV", //DESA
+                                   "DesaCobro_MX_Test","D3s4MX.2019"); //DESA
                                    //"jdbc:sqlserver://172.21.10.83:1433;SelectMethod=cursor;DatabaseName=TELEMARKETING_PROD",
                                    //"desacobros","D3s4C0br0s.2013");
                                    //"caquiroz","chq86v(10)");//USUARIO Y CONTRASEÑA
                                     //"DesaCobro_MX_Test","D3s4MX.2017");
-                                    "dessiaikeMX","dess1ike.TMK.2011");
+                                    
                                     //"AdmCobroTest","4dmc@br@t3st");
           pool.init(200); 
           isConnected = true;

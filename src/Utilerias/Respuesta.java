@@ -207,10 +207,24 @@ public class Respuesta extends JPanel
                              SP= rs.getString("Respuesta").toString() +" 1,'";
                 }
                 else{
-                    SP="sp_tmkgcA_cargaRespuesta '";
-                }
+                    if(tipoResp.contains("API")){
+                        rs= UtileriasBDF.rsSQLNP("select SP_ProcesaResp [Respuesta] from tmkgcA_proyectocobroMx P where dsproyecto='"+proy+"' and activo=1 group by SP_ProcesaResp");
 
-            query= SP + proy+"', "+lote;
+                            if(rs.next())
+                                 SP= rs.getString("Respuesta").toString() +"  ";
+                    }
+                    else{
+                        SP="sp_tmkgcA_cargaRespuesta '";
+                    }
+                }
+                
+            if(tipoResp.contains("API")){
+                        query= SP + lote;
+                    }
+                    else{
+                        query= SP + proy+"', "+lote;
+                    }    
+            
             rs=null;
 
                 System.out.println(query);
