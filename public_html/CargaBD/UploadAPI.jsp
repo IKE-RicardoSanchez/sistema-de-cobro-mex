@@ -82,7 +82,7 @@
                         <input type="hidden" id="tipoResp" name="tipoResp" value=''/>
                     </div>  
                     <div  class='VTable' style=' z-index:4; left:380px; top:258px;'>
-                        <input type="button" value="Reload" onclick='location.reload();'/>
+                        <input type="button" value="Actualizar" onclick='location.reload();'/>
                         <!--<input type="button" id="refresca" value="ReloadF" onclick='prueba();'/>-->
                     </div> 
                 </div>

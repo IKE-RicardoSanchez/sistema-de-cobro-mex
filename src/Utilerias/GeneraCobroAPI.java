@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import org.json.JSONObject;
@@ -19,14 +21,17 @@ public class GeneraCobroAPI  extends HttpServlet{
     private static String TokenSession= "";
     
     public GeneraCobroAPI (int lote, String dsproyecto){
-        //postGeneraTokenSession("me", "password");
+        postGeneraTokenSession("yo", "password");
         postAPI(lote,dsproyecto);
     }
     private void postAPI(int lote, String dsproyecto){    
         try{
-            URL url = new URL("http://localhost:8190/Prueba");
-            //URL url = new URL("https://70d7507af570.ngrok.io/consulta");
-            HttpURLConnection conn= (HttpURLConnection) url.openConnection();
+            //URL url = new URL("http://c98d-187-234-105-221.ngrok.io/consulta");
+            URL url = new URL("https://appstest.ikeasistencia.com/tokenizacion-jenkins/consulta");  //QA
+            //URL url = new URL("https://apihub.ikeasistencia.com/tokenizacion-jenkins/consulta");  //PROD
+            //HttpURLConnection conn= (HttpURLConnection) url.openConnection();
+            HttpsURLConnection conn= (HttpsURLConnection) url.openConnection();
+            
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
@@ -36,11 +41,15 @@ public class GeneraCobroAPI  extends HttpServlet{
             
             String input= "{\"lote\":"+lote+",\"dsproyecto\":\""+dsproyecto+"\"}";
             
+            SSLContext sc = SSLContext.getInstance("TLSv1.2");
+            sc.init(null, null, new java.security.SecureRandom());
+            conn.setSSLSocketFactory(sc.getSocketFactory());
+            
             OutputStream os = conn.getOutputStream();
             os.write(input.getBytes());
             os.flush();
             
-            if(conn.getResponseCode() != HttpURLConnection.HTTP_OK){
+            if(conn.getResponseCode() != HttpsURLConnection.HTTP_OK){
                 throw new RuntimeException("Failed : HTTP Error code : "
                         + conn.getResponseCode());
             }
@@ -85,20 +94,27 @@ public class GeneraCobroAPI  extends HttpServlet{
     
     private void postGeneraTokenSession(String Usuario, String contrasena){    
         try{
-            URL url = new URL("http://localhost:8190/Prueba");
-            //URL url = new URL("https://70d7507af570.ngrok.io/api/login");
-            HttpURLConnection conn= (HttpURLConnection) url.openConnection();
+            //URL url = new URL("https://c98d-187-234-105-221.ngrok.io/api/login");
+            URL url = new URL("https://appstest.ikeasistencia.com/tokenizacion-jenkins/api/login"); //QA
+            //URL url = new URL("https://apihub.ikeasistencia.com/tokenizacion-jenkins/api/login");  //PROD
+            //HttpURLConnection conn= (HttpURLConnection) url.openConnection();
+            HttpsURLConnection conn= (HttpsURLConnection) url.openConnection();
+            
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
             
             String input= "{\"username\":"+Usuario+",\"password\":\""+contrasena+"\"}";
             
+            SSLContext sc = SSLContext.getInstance("TLSv1.2");
+            sc.init(null, null, new java.security.SecureRandom());
+            conn.setSSLSocketFactory(sc.getSocketFactory());
+            
             OutputStream os = conn.getOutputStream();
             os.write(input.getBytes());
             os.flush();
             
-            if(conn.getResponseCode() != HttpURLConnection.HTTP_OK){
+            if(conn.getResponseCode() != HttpsURLConnection.HTTP_OK){
                 throw new RuntimeException("Failed : HTTP Error code : "
                         + conn.getResponseCode());
             }
