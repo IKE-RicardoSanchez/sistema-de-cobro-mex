@@ -13,7 +13,7 @@
     <%	System.out.println("Genera Cobro...");
 
         String StrclUsrApp ="0";
-        String strclUsr ="0", envioAPI="";
+        String strclUsr ="0", envioAPI="", URLAPI="", URLToken="", UserTokenValue="", PassTokenValue="";
             if (session.getAttribute("clUsrApp")!=null){
                     strclUsr = session.getAttribute("clUsrApp").toString();
             }else{
@@ -66,8 +66,13 @@
             while(rs2.next())
                 {
                     envioAPI= rs2.getString("EnvioAPI").toString();
+                    
+                    URLAPI= rs2.getString("URLAPI").toString();
+                    URLToken= rs2.getString("URLToken").toString();
+                    UserTokenValue= rs2.getString("UserTokenValue").toString();
+                    PassTokenValue= rs2.getString("PassTokenValue").toString();
                  }
-            System.out.println("EnvioAPI: ."+envioAPI+".");
+            System.out.println("EnvioAPI: ."+envioAPI+"."+"\n Ruta API: "+URLAPI);
 //*******  Fin Valida si se tiene que enviar datos a API
 
                 if(!cobro.toString().contains("Proceso Exitoso"))
@@ -89,7 +94,8 @@
                     <script>
     <%          if (envioAPI.contentEquals("1")){
                     System.out.println("Se van a enviar datos al API: "+session.getAttribute("lote").toString()+" , "+session.getAttribute("proyecto").toString());
-                    new GeneraCobroAPI(Integer.parseInt(session.getAttribute("lote").toString()),session.getAttribute("proyecto").toString());
+                    new GeneraCobroAPI(Integer.parseInt(session.getAttribute("lote").toString()),session.getAttribute("proyecto").toString(),URLAPI,URLToken,UserTokenValue,PassTokenValue);
+                     //new GeneraCobroAPI(1,"BJPC","http://172.21.16.76:9220/api/banbajio/cobro/loteCobro","http://172.21.16.76:9220/authenticate","usrBBCobros","a9¡8an!1oXm");
                     System.out.println("Se enviaron datos al API");
                 }
     %>
